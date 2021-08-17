@@ -17,11 +17,11 @@ describe S3Relay::PrivateUrl do
   describe "#generate" do
     it do
       uuid = "123-456-789"
-      file = "Crazy + c@t picture.png"
-      time = Time.parse("2014-01-01 12:00am")
+      file = "Crazy + c@t #1 ?\\picture.png"
+      time = Time.parse("2014-01-01 12:00:00")
       url  = S3Relay::PrivateUrl.new(uuid, file, expires: time).generate
 
-      _(url).must_equal "https://s3.region.amazonaws.com/bucket/123-456-789/Crazy%20%2B%20c@t%20picture.png?AWSAccessKeyId=access-key-id&Expires=1388563200&Signature=8Kp5NL77iycg4CFFwxboo905t%2Fs%3D"
+      _(url).must_equal "https://s3.region.amazonaws.com/bucket/123-456-789/Crazy%20%2B%20c@t%20%231%20%3F%5Cpicture.png?AWSAccessKeyId=access-key-id&Expires=1388563200&Signature=jrdmcGgWW9j9nNyq9hdqQkZUeR0%3D"
     end
   end
 
